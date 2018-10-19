@@ -1,5 +1,5 @@
 <div class="container">
-    <p class="alignCenter">&copy Copyright</p>
+    <p class="alignCenter">&copy Copyright - NeuralCorp</p>
 </div>
 
 

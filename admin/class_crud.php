@@ -54,8 +54,8 @@ class crud
 	}
 
 	//função deletar contatos
-	public function delete($id){
-		$stmt = $this->db->prepare("DELETE FROM contatos WHERE id=:id");
+	public function delete($id){		
+		$stmt = $this->db->prepare("DELETE FROM contatos WHERE id = :id");
 		$stmt->bindparam(":id",$id);
 		$stmt->execute();
 		return true;
@@ -65,12 +65,30 @@ class crud
 	// função para criação de mascaras para representação de dados
 	public function mascara_string($mascara,$string)
 		{
-		   $string = str_replace(" ","",$string);
-		   for($i=0;$i<strlen($string);$i++)
-		   {
-		      $mascara[strpos($mascara,"#")] = $string[$i];
-		   }
-		   return $mascara;
+		   #$string = str_replace(" ","",$string);
+		   #for($i=0;$i<strlen($string);$i++)
+		   #{
+		   #   $mascara[strpos($mascara,"#")] = $string[$i];
+		   #}
+		   #return $mascara;
+
+		$ddd=substr($string,0,2);       
+		$telefone=substr($string,2);  
+		 
+		 if(strlen($telefone)===9){
+			 $telPart1=substr($telefone,0,5);
+			 $telPart2=substr($telefone,5);
+		 } elseif(strlen($telefone)>9) { 
+			 $ddd=substr($telefone,0,2);
+			 $telPart1=substr($telefone,2,4);
+			 $telPart2=substr($telefone,5,4);							
+		 } else {
+			 $telPart1=substr($telefone,0,4);
+			 $telPart2=substr($telefone,4);							
+		 }
+	 
+	    return '('.$ddd.') '.$telPart1.'-'.$telPart2;    
+		
 		}
 
 	// função para visualizar dados
@@ -87,7 +105,7 @@ class crud
                 <tr>
 	                <td><?php print($row['id']); ?></td>
 	                <td><?php print($row['nome']); ?></td>
-	                <td><?php $tel = $row['telefone']; print($this->mascara_string("(##) ####-####",$tel)); ?></td>
+	                <td><?php $tel = $row['telefone']; print($this->mascara_string("(##) ####-#####",$tel)); ?></td>
 	                <td><a href="mailto:<?php print($row['email']); ?>"><?php print($row['email']); ?></a></td>
                 </tr>
                 <?php

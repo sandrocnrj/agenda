@@ -2,7 +2,7 @@
 include_once 'dbconfig.php';
 
 if(isset($_POST['btn-deletar'])){
-	$id = $_GET['delete_id'];
+	$id = $_GET['deletar_id'];
 	$crud->delete($id);
 	header("Location: deletar.php?deletado");
 }
@@ -40,7 +40,7 @@ if(isset($_POST['btn-deletar'])){
          <th>Email</th>
          </tr>
          <?php
-         $stmt = $db_con->prepare("SELECT * FROM agenda WHERE id=:id");
+         $stmt = $db_con->prepare("SELECT * FROM contatos WHERE id=:id");
          $stmt->execute(array(":id"=>$_GET['deletar_id']));
          while($row=$stmt->fetch(PDO::FETCH_BOTH))
          {
@@ -67,7 +67,7 @@ if(isset($_GET['deletar_id']))
 {
 	?>
   	<form method="post">
-        <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
+        <input type="hidden" name="id" value="<?php echo $_GET['deletar_id']; ?>" />
         <button class="btn btn-primary" type="submit" name="btn-deletar"><i class="fa fa-trash"></i> &nbsp; Sim</button>
         <a href="index.php" class="btn btn-primary btn-success"><i class="fa fa-angle-double-left"></i> &nbsp; Não</a>
     </form>  

@@ -47,7 +47,7 @@ include_once 'dbconfig.php';
 	 
 	        <tr>
 	            <td>Telefone</td>
-	            <td><input type='text' name='telefone' class='form-control' required></td>
+	            <td><input type='text' id='telefone' name='telefone' class='form-control' required></td>
 	        </tr>
 	 
 	        <tr>
