@@ -30,7 +30,7 @@
     <div class="container">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="<?php echo '/ezielma/' ;?>">Home</a></li>
+          <li class="active"><a href="<?php echo '/agenda/' ;?>">Home</a></li>
           <li><a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/admin/' ;?>">Login</a></li>
         </ul> 
       </div>      

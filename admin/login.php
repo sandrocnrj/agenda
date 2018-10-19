@@ -49,7 +49,6 @@
         <input type="text" class="input-block-level" placeholder="login" name="usuario">
         <input type="password" class="input-block-level" placeholder="password" name="senha">
         <button class="btn btn-primary " type="submit" name="btn-login">Enviar</button><br><br>
-        <a href="cadastrar-user/">Inscrever</a> - <a href="<?php echo "../"; ?>">Visitar ao site</a>
       </form>
 </div> <!-- /container -->
 
